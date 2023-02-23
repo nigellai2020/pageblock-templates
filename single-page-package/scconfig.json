@@ -1,0 +1,16 @@
+{
+    "main": "@modules/main",
+    "moduleDir": "modules",
+    "modules": {
+        "@modules/main": {
+            "path": "main",
+            "dependencies": []
+        }
+    },
+    "dependencies": {
+        "@ijstech/eth-wallet": "*",
+        "@ijstech/eth-contract": "*",
+        "@scom/scom-page-builder": "*",
+        "@scom/secure-page-viewer": "*"
+    }
+}
