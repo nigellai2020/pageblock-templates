@@ -5442,8 +5442,14 @@ define("@scom/scom-page-builder", ["require", "exports", "@ijstech/components", 
             return await this.pageRows.appendRow(rowData);
         }
         onUpdateWrapper() {
-            this.contentWrapper.minHeight = `calc((100vh - 6rem) - ${this.builderFooter.offsetHeight}px)`;
-            this.contentWrapper.padding = { bottom: this.builderFooter.offsetHeight };
+            // if (this.builderFooter.offsetHeight == 0) {
+            //     this.contentWrapper.minHeight = `calc((100vh - 6rem) - ${this.builderFooter.minHeight}px)`;
+            //     this.contentWrapper.padding = {bottom: this.builderFooter.minHeight};
+            // }
+            // else {
+            //     this.contentWrapper.minHeight = `calc((100vh - 6rem) - ${this.builderFooter.offsetHeight}px)`;
+            //     this.contentWrapper.padding = {bottom: this.builderFooter.offsetHeight};
+            // }
         }
         render() {
             return (this.$render("i-panel", { id: "editor", width: '100%', height: '100%' },
