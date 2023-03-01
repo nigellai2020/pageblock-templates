@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define("@scom-page-launcher/main", ["require", "exports", "@ijstech/components"], function (require, exports, components_1) {
+define("@modules/main", ["require", "exports", "@ijstech/components"], function (require, exports, components_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.MainModule = void 0;
@@ -23,9 +23,13 @@ define("@scom-page-launcher/main", ["require", "exports", "@ijstech/components"]
             else
                 this.loadPageViewerModule();
         }
-        setData(data) {
-            if (this.module && this.module.setData)
-                this.module.setData(data);
+        setData(rootDir, data) {
+            if (this.module) {
+                if (this.module.setRootDir)
+                    this.module.setRootDir(rootDir);
+                if (this.module.setData)
+                    this.module.setData(data);
+            }
         }
         getData() {
             let data;
@@ -50,10 +54,10 @@ define("@scom-page-launcher/main", ["require", "exports", "@ijstech/components"]
             this.loadModule("libs/@scom/secure-page-viewer/index.js");
         }
         async loadPageBuilderModule() {
-            var _a;
+            var _a, _b;
             await this.loadModule("libs/@scom/scom-page-builder/index.js");
             if ((_a = this.options) === null || _a === void 0 ? void 0 : _a._data) {
-                this.setData(this.options._data);
+                this.setData((_b = this.options) === null || _b === void 0 ? void 0 : _b.rootDir, this.options._data);
             }
         }
         render() {
